@@ -4,11 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ToursListRequest extends FormRequest
+class TravelRequest extends FormRequest
 {
-    public mixed $dateFrom;
-
-
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -25,18 +22,10 @@ class ToursListRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'priceFrom' => 'numeric',
-            'priceTo' => 'numeric',
-            'dateFrom' => 'date',
-            'dateTo' => 'date',
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'priceFrom' => 'priceFrom is not Correct',
-            'dateFrom' => 'Date is not Valid'
+            'is_public' => 'boolean',
+            'name' => ['required'],
+            'description' => 'required',
+            'number_of_days' => ['required','integer'],
         ];
     }
 }
